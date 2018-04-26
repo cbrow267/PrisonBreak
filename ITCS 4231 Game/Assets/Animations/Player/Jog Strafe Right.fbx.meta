@@ -176,7 +176,11 @@ ModelImporter:
       firstFrame: 0
       lastFrame: 22
       wrapMode: 0
+<<<<<<< HEAD
       orientationOffsetY: 91.92
+=======
+      orientationOffsetY: 0
+>>>>>>> d3394eea5cb64fd587e69fab61e57f02f4f2c02d
       level: 0
       cycleOffset: 0
       loop: 0

@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
+<<<<<<< HEAD
 //using UnityEditor;
+=======
+using UnityEditor;
+>>>>>>> d3394eea5cb64fd587e69fab61e57f02f4f2c02d
 
 public class PropellerBoats : MonoBehaviour
 {
@@ -80,6 +84,10 @@ public class PropellerBoats : MonoBehaviour
 
   void OnDrawGizmos()
   {
+<<<<<<< HEAD
     //Handles.Label(propellers[0].position, engine_rpm.ToString());
+=======
+    Handles.Label(propellers[0].position, engine_rpm.ToString());
+>>>>>>> d3394eea5cb64fd587e69fab61e57f02f4f2c02d
   }
 }

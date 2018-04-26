@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title Screen.unity
     guid: 02f3c6bbdca20604a80ca08a98d1e06a
+<<<<<<< HEAD
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/game.unity
     guid: 6ce815b476ffdf445810d80d6fad7520
+=======
+  - enabled: 1
+    path: Assets/Scenes/game.unity
+    guid: 166c62dc9ee2d044c859fc8cff6ac434
+>>>>>>> d3394eea5cb64fd587e69fab61e57f02f4f2c02d
