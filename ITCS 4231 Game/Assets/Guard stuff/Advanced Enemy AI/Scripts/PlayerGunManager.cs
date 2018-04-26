@@ -1,11 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 //using UnityEditor;
-=======
-using UnityEditor;
->>>>>>> d3394eea5cb64fd587e69fab61e57f02f4f2c02d
 
 public class PlayerGunManager : MonoBehaviour
 {
