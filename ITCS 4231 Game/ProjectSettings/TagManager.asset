@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - CameraTarget
+  - Door
+  - Gas
+  - Key
+  - Boat
   layers:
   - Default
   - TransparentFX
