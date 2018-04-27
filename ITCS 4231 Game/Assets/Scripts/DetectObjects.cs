@@ -22,26 +22,16 @@ public class DetectObjects : MonoBehaviour
         {
             if (hit.collider.tag == "Door" && hit.distance < openDist)
             {
-                //dist = hit.distance;
                 detected = "Door";
                 detectedObject = hit.collider.gameObject;
                 interact.text = "F to open";
             }
             else if ((hit.collider.tag == "Gas" || hit.collider.tag == "Key") && hit.distance < openDist)
             {
-                //dist = hit.distance;
                 detected = "Item";
                 detectedObject = hit.collider.gameObject;
                 interact.text = "F to pick up";
             }
-            /*
-            else if (hit.collider.tag == "Key" && hit.distance < openDist)
-            {
-                //dist = hit.distance;
-                detected = "Item";
-                detectedObject = hit.collider.gameObject;
-                interact.text = "F to pick up";
-            } */
             else if ((hit.collider.tag == "Boat" || hit.collider.tag == "Helicopter") && hit.distance < openDist)
             {
                 detected = "Vehicle";
@@ -51,11 +41,9 @@ public class DetectObjects : MonoBehaviour
             }
             else
             {
-                //dist = 0f;
                 detected = "";
                 interact.text = "";
             }
-            //TODO check for item detected
         }
     }
 }

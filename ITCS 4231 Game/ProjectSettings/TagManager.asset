@@ -9,6 +9,7 @@ TagManager:
   - Gas
   - Key
   - Boat
+  - Helicopter
   layers:
   - Default
   - TransparentFX

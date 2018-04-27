@@ -62,22 +62,23 @@ public class PlayerManager : MonoBehaviour {
                     camTarget.transform.Translate((0.25f * 2), 0f, 0f);
             }
 
-            //TODO check which object is detected (door or item) and call appropriate function
-            //Press F to interact with item
+
+            //Press F to interact with vehicle, door or item
             if (Input.GetKeyDown(KeyCode.F))
-            {
-                GameObject seenObj = camTarget.GetComponent<DetectObjects>().detectedObject;
-                if (seenObj.tag == "Door")
+            {   
+                // 
+                GameObject seen = camTarget.GetComponent<DetectObjects>().detectedObject;
+                if (seen.tag == "Door")
                 {
-                    seenObj.GetComponent<DoorController>().OpenClose();
+                    seen.GetComponent<DoorController>().OpenClose();
                 }
                 else if (camTarget.GetComponent<DetectObjects>().detected == "Item")
                 {
-                    ItemManager.self.PickUp(camTarget, seenObj);
+                    ItemManager.self.PickUp(camTarget, seen);
                 }
-                else if ((camTarget.GetComponent<DetectObjects>().detected == "Vehicle") && EscapeManager.self.CanEscape(seenObj.tag))
+                else if ((camTarget.GetComponent<DetectObjects>().detected == "Vehicle") && EscapeManager.self.CanEscape(seen.tag))
                 {
-                    EscapeManager.self.Escape(seenObj.tag);
+                    EscapeManager.self.Escape(seen.tag);
                 }
             }
         }

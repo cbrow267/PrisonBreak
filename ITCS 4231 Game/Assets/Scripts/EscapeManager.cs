@@ -22,18 +22,17 @@ public class EscapeManager : MonoBehaviour {
         }
     }
 
-
     [SerializeField] private Camera boatCam;
-    //[SerializeField] private Camera heliCam;
+    [SerializeField] private Camera heliCam;
     [SerializeField] private GameObject boat;
-    //[SerializeField] private GameObject heli;
+    [SerializeField] private GameObject heli;
+
     private Animator anim;
     private GameObject player;
-    private bool canRun = false;
-
+    private bool canEscape_Boat = false;     //True if the player has acquired necessary items to escape for specified vehicle
+    private bool canEscape_Heli = false;
     private void Start()
     {
-        
         print(boat.transform.position);
         Vector3.Lerp(boat.transform.position, boat.transform.forward * 1000, 5);
 
@@ -44,11 +43,15 @@ public class EscapeManager : MonoBehaviour {
     }
     private void Update()
     {
-        Debug.DrawRay(boat.transform.position - 2 * (boat.transform.right), -boat.transform.right, Color.yellow);
+        Debug.DrawRay(heli.transform.position + 3 * (heli.transform.forward) + heli.transform.up, heli.transform.forward, Color.blue);
 
-        if (canRun)
+        if (canEscape_Heli)  //TODO rename canEscape to better suit multiple escape routes ie -> canEscapeOnBoat
         {
-            boat.transform.position = new Vector3(boat.transform.position.x, boat.transform.position.y, boat.transform.position.z + 0.3f);
+            HeliEscape();
+        }
+        else if (canEscape_Boat)   //TODO change to -> else if (canEscapeOnHeli)
+        {
+            BoatEscape();
         }
     }
 
@@ -77,14 +80,44 @@ public class EscapeManager : MonoBehaviour {
         {
             Camera.main.enabled = false;
             boatCam.enabled = true;
-            canRun = true;
+            canEscape_Boat = true;
+
             player.GetComponent<PlayerManager>().canMove = false;
             player.transform.parent = boat.transform;
             player.GetComponent<Collider>().enabled = false;
             player.GetComponent<Rigidbody>().detectCollisions = false;
-            player.transform.position = new Vector3(boat.transform.position.x, boat.transform.position.y - 0.4f, boat.transform.position.z);
-            player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, player.transform.eulerAngles.y + 180, player.transform.eulerAngles.z);
+            //player.transform.position = new Vector3(boat.transform.position.x, boat.transform.position.y - 0.4f, boat.transform.position.z);
+            player.transform.position = new Vector3(boat.transform.position.x + 0.455f, boat.transform.position.y - 0.134f, boat.transform.position.z);
+            //player.transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, player.transform.eulerAngles.y + 180, player.transform.eulerAngles.z);
+
             anim.SetBool("Escaping", true);
         }
+        else if (vehicle == "Helicopter")
+        {
+            //Camera.main.enabled = false;
+            //heliCam.enabled = true;
+            canEscape_Heli = true;
+
+            player.SetActive(false);
+        }
+    }
+
+    private void BoatEscape()
+    {
+        Debug.DrawRay(boat.transform.position - 2 * (boat.transform.right), -boat.transform.right, Color.yellow);
+
+        boat.transform.position = new Vector3(boat.transform.position.x, boat.transform.position.y, boat.transform.position.z + 0.3f);
+    }
+
+    private void HeliEscape()
+    {
+        //heli.transform.position = new Vector3(heli.transform.position.x, heli.transform.position.y, heli.transform.position.z + 0.3f);
+        Debug.DrawRay(heli.transform.position + 5 * (heli.transform.forward) + heli.transform.up, heli.transform.forward, Color.blue);
+        Debug.Log("heli away!!!!!!!!!!!!");
+
+        // TODO 
+        // 1.  for escaping, move helicopter straight up until y == 15, 
+        //     then begin moving forward and add to x rotation until x == (somewhere between 15-20)
+        // 2. Play rotor sound effect
     }
 }

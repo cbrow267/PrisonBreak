@@ -8,6 +8,7 @@ public class ItemManager : MonoBehaviour
 
     public static ItemManager self;
     [SerializeField] private Text acItem;
+    float itemChance = 0.5f;
 
     void Awake()
     {
@@ -32,24 +33,24 @@ public class ItemManager : MonoBehaviour
     public void PickUp(GameObject camTarget, GameObject item)
     {
         float rand = Random.Range(0f, 1f);
-        if (item.tag == "Gas" && rand <= 0.7f && InventoryManager.self.getBoatGas())
+        if (item.tag == "Gas" && rand <= itemChance && InventoryManager.self.getBoatGas())
         {
             rand = 1f;
         }
-        else if (item.tag == "Key" && rand <= 0.7f && InventoryManager.self.getBoatKey())
+        else if (item.tag == "Key" && rand <= itemChance && InventoryManager.self.getBoatKey())
         {
             rand = 1f;
         }
-        else if (item.tag == "Gas" && rand > 0.8f && InventoryManager.self.getHeliGas())
+        else if (item.tag == "Gas" && rand > itemChance && InventoryManager.self.getHeliGas())
         {
             rand = 0f;
         }
-        else if (item.tag == "Key" && rand > 0.8f && InventoryManager.self.getBoatGas())
+        else if (item.tag == "Key" && rand > itemChance && InventoryManager.self.getBoatGas())
         {
             rand = 0f;
         }
 
-        if (rand <= 0.8f)   //boat
+        if (rand <= itemChance)   //boat
         {
             if (item.tag == "Gas")
             {
@@ -82,9 +83,10 @@ public class ItemManager : MonoBehaviour
         }
         StartCoroutine(ItemAcquired());
     }
+    WaitForSeconds wfs = new WaitForSeconds(3f);
     IEnumerator ItemAcquired()
     {
-        yield return new WaitForSeconds(3f);
+        yield return wfs;
         acItem.text = "";
     }
 }
