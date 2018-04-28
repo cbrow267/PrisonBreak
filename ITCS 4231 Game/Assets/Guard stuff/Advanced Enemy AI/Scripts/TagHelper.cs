@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
  
-public static class TagHelper
+/*public static class TagHelper
  {
      public static void addTag(string tag)
      {
@@ -25,4 +25,4 @@ public static class TagHelper
              so.Update();
          }
      }
- }
+ }*/
