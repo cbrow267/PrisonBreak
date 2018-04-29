@@ -27,10 +27,12 @@ public class SurfaceManager : MonoBehaviour {
 		else if(singleton != this) Destroy(gameObject);
 	}
 
-	public AudioClip GetFootstep(Collider groundCollider, Vector3 worldPosition) {
+	public AudioClip GetFootstep(Collider groundCollider, Vector3 worldPosition)
+    {
 		int surfaceIndex = GetSurfaceIndex(groundCollider, worldPosition);
 
-		if(surfaceIndex == -1) {
+		if(surfaceIndex == -1)
+        {
 			return null;
 		}
 
@@ -38,18 +40,18 @@ public class SurfaceManager : MonoBehaviour {
 		AudioClip[] footsteps = definedSurfaces[surfaceIndex].footsteps;
 		n = Random.Range(1, footsteps.Length);
 
-		// Move picked sound to index 0 so it's not picked next time.
-		AudioClip temp = footsteps[n];
-		footsteps[n] = footsteps[0];
-		footsteps[0] = temp;
+        // Move picked sound to index 0 so it's not picked next time.
+        //AudioClip temp = footsteps[n];
+        //footsteps[n] = footsteps[0];
+        //footsteps[0] = temp;
 
-		return temp;
+        return footsteps[0];
 	}
 
 	public string[] GetAllSurfaceNames() {
 		string[] names = new string[definedSurfaces.Length];
 
-		for(int i = 0;i < names.Length;i ++) names[i] = definedSurfaces[i].name;
+		for(int i = 0; i < names.Length;i ++) names[i] = definedSurfaces[i].name;
 
 		return names;
 	}
