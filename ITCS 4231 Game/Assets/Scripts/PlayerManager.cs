@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour {
     public bool canMove = true;
     //[SerializeField] private float turnSpeed = 5.0f;
 
+    public Inventory inventory;
     // Use this for initialization
     void Start() {
         anim.SetInteger(HashIDs.self.playerMovementTypeInt, (int)PlayerMovementType.idle);
@@ -100,5 +101,14 @@ public class PlayerManager : MonoBehaviour {
         Vector3 towards = transform.eulerAngles;
         towards.y = Camera.main.transform.eulerAngles.y;
         transform.eulerAngles = towards;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
+        if(item != null)
+        {
+            inventory.AddItem(item);
+        }
     }
 }
