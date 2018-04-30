@@ -29,11 +29,11 @@ public class EscapeManager : MonoBehaviour {
 
     private Animator anim;
     private GameObject player;
-    private bool canEscape_Boat = false;     //True if the player has acquired necessary items to escape for specified vehicle
+    //True if the player has acquired necessary items to escape for specified vehicle
+    private bool canEscape_Boat = false;     
     private bool canEscape_Heli = false;
     private void Start()
     {
-        print(boat.transform.position);
         Vector3.Lerp(boat.transform.position, boat.transform.forward * 1000, 5);
 
         boatCam.enabled = false;
@@ -45,11 +45,11 @@ public class EscapeManager : MonoBehaviour {
     {
         Debug.DrawRay(heli.transform.position + 3 * (heli.transform.forward) + heli.transform.up, heli.transform.forward, Color.blue);
 
-        if (canEscape_Heli)  //TODO rename canEscape to better suit multiple escape routes ie -> canEscapeOnBoat
+        if (canEscape_Heli) 
         {
             HeliEscape();
         }
-        else if (canEscape_Boat)   //TODO change to -> else if (canEscapeOnHeli)
+        else if (canEscape_Boat) 
         {
             BoatEscape();
         }

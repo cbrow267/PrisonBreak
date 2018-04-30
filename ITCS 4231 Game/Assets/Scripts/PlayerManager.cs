@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -9,7 +10,6 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private Transform cam;
     [SerializeField] private GameObject camTarget;
     public bool canMove = true;
-    //[SerializeField] private float turnSpeed = 5.0f;
 
     public Inventory inventory;
     // Use this for initialization
@@ -21,7 +21,6 @@ public class PlayerManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         float xmove = Input.GetAxis("Horizontal");
         float zmove = Input.GetAxis("Vertical");
 
