@@ -55189,7 +55189,7 @@ GameObject:
   - component: {fileID: 1051475893}
   - component: {fileID: 1051475892}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56467,6 +56467,23 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e218a0d7c0a74e143b4c3f50fed3f87c, type: 3}
   m_PrefabInternal: {fileID: 1073052089}
+--- !u!1 &1074845327 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1985307363293878, guid: 582067eab6079404aaf6cf4624584a7f,
+    type: 2}
+  m_PrefabInternal: {fileID: 687697105}
+--- !u!114 &1074845333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1074845327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 69d0077dfbf6cad4ea43a44c23cd0276, type: 2}
 --- !u!1 &1075524003
 GameObject:
   m_ObjectHideFlags: 0
