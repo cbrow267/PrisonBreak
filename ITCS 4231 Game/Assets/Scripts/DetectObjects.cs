@@ -28,6 +28,7 @@ public class DetectObjects : MonoBehaviour
             }
             else if ((hit.collider.tag == "Gas" || hit.collider.tag == "Key") && hit.distance < openDist)
             {
+                print("found gas or key");
                 detected = "Item";
                 detectedObject = hit.collider.gameObject;
                 interact.text = "F to pick up";
