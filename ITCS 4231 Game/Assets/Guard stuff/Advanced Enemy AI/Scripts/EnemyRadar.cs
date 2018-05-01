@@ -42,7 +42,7 @@ public class EnemyRadar : MonoBehaviour
 
 	void Update ()
 	{
-		hearingRadius = info.hearingRadius;
+		hearingRadius = 15f;
 		viewAngle = info.viewAngle;
 		sightDistance = info.sightDistance;
 		audibilityThreshold = info.audibilityThreshold;

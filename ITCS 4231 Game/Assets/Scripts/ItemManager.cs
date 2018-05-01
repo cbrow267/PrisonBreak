@@ -45,7 +45,7 @@ public class ItemManager : MonoBehaviour
         {
             rand = 0f;
         }
-        else if (item.tag == "Key" && rand > itemChance && InventoryManager.self.getBoatGas())
+        else if (item.tag == "Key" && rand > itemChance && InventoryManager.self.getHeliKey())
         {
             rand = 0f;
         }

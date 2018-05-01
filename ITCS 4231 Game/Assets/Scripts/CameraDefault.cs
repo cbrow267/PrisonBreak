@@ -38,7 +38,8 @@ public class CameraDefault : MonoBehaviour {
 
 	void LateUpdate()
 	{
-
+        if (!EscapeManager.self.escaping)
+        {
             if (TargetLookAt == null)
                 return;
 
@@ -48,7 +49,7 @@ public class CameraDefault : MonoBehaviour {
 
             UpdatePosition();
             player.SetDirection();
-
+        }
     }
 
 	public void HandlePlayerInput()

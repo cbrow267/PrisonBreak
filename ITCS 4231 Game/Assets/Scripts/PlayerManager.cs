@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -65,22 +65,29 @@ public class PlayerManager : MonoBehaviour {
 
             //Press F to interact with vehicle, door or item
             if (Input.GetKeyDown(KeyCode.F))
-            {   
-                // 
+            {
                 GameObject seen = camTarget.GetComponent<DetectObjects>().detectedObject;
-                if (seen.tag == "Door")
-                {
-                    seen.GetComponent<DoorController>().OpenClose();
-                }
-                else if (camTarget.GetComponent<DetectObjects>().detected == "Item")
-                {
-                    ItemManager.self.PickUp(camTarget, seen);
-                }
-                else if ((camTarget.GetComponent<DetectObjects>().detected == "Vehicle") && EscapeManager.self.CanEscape(seen.tag))
-                {
-                    EscapeManager.self.Escape(seen.tag);
+                if (seen != null)
+                { 
+                    if (seen.tag == "Door")
+                    {
+                        seen.GetComponent<DoorController>().OpenClose();
+                    }
+                    else if (camTarget.GetComponent<DetectObjects>().detected == "Item")
+                    {
+                        ItemManager.self.PickUp(camTarget, seen);
+                    }
+                    else if ((camTarget.GetComponent<DetectObjects>().detected == "Vehicle") && EscapeManager.self.CanEscape(seen.tag))
+                    {
+                        EscapeManager.self.Escape(seen.tag);
+                    }
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
